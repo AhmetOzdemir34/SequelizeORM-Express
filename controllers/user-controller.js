@@ -14,7 +14,7 @@ const register = async (req,res) => {
         /*
         You can do some validation operation here!
         */
-        const person = await Person.create({
+        await Person.create({
             fullname, age, email, password
         }).then((p) => {
             return res.status(201).json(p);
@@ -32,7 +32,7 @@ const login = async (req,res)=>{
         
         if(!person) return res.status(400).json({statusCode: 400, message:"The Account does not exist!"});
         
-        const token = jwt.sign({key:person.id},process.env.PG, {expiresIn:'1d'});
+        const token = await jwt.sign({key:person},process.env.PG, {expiresIn:'1d'});
         return res.cookie('token',token,{
             httpOnly: true}).status(201).json({message:"Login Successful!"});
     }catch(err){

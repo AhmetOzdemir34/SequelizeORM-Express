@@ -31,3 +31,10 @@ app.listen(port, ()=>{
     //db.REFRESH_DB();
     console.log(`localhost:${port} is active!`);
 });
+
+/*
+task modeli oluştur
+sequelize'a tanıt
+route yaz
+ctrl yaz
+*/

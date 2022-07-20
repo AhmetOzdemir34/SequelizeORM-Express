@@ -41,10 +41,14 @@ const REFRESH_DB = async () => {
     const Person = require('../models/person-model');
     const Team = require('../models/team-model');
     const Person_Team = require('../models/person-team-model');
-    
+    const Task = require('../models/task-model');
+    // Relation 1 - Many-to-Many
     Person.belongsToMany(Team,{through: Person_Team});
     Team.belongsToMany(Person,{through: Person_Team});
-
+    // Relation 2 - One-to-Many
+    Team.hasMany(Task);
+    Task.belongsTo(Team, {onDelete:'CASCADE'});
+    
     await sequelize.sync({force:true});
 }
 

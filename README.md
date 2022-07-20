@@ -6,7 +6,7 @@
 ---
 
 ## Models
-Database have 2 models; People & Teams. There are many-to-many relationship between people and teams.
+Database have 3 models; People & Teams & Tasks. There are many-to-many and one-to-many relationships between the tables.
 
 <img src="./src/diagram.png" alt="isolated" width='700'/>
 
@@ -28,5 +28,9 @@ Let's examine API as two different titles. User Auth, Database Operations.
 |   delPerson  	| ✅ |   You have to send user_id params with request. Person will be deleted in person table	|
 |   createTeam	| ✅ |   You have to send user_id params with request. You have to send all required values for a new team.    |
 |   delTeam	    | ✅ |   You have to send user_id & team_id params with request. Delete the team in person_teams table and teams table.	|
+|   createTask  	| ✅ |   If you logged in, you can send post request. You can generate a task for the team.	|
+|   getTasks  	| ✅ |   If you logged in you must give team id. Return a response that includes all of tasks of the team.	|
+|   delTask	| ✅ |   to delete a task    |
+|   updateTask	    | ✅ |   title and description will be updated.	|
 
 
